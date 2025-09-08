@@ -14,7 +14,6 @@ public class UnderwaterCave {
             case 1 -> System.out.println("You picked up: Oxygen Tank");
             case 2 -> System.out.println("You picked up: Diving Suit");
             case 3 -> System.out.println("You picked up: Harpoon");
-            case 4 -> System.out.println("You picked up: Waterproof Map");
             default -> System.out.println("You dive in with nothing but your breath.");
         }
 
