@@ -16,7 +16,7 @@ Each project has its own README with detailed instructions and information.
 
 - **Library Management System
   This project simulates a library management system regarding fines, loans, and data on individuals.
-  Detailed instructions: [LibraryManagementSystem/0-Introduction.md](LibraryManagementSystem/0-Introduction.md)
+  Detailed instructions: [Library Management System/0-Introduction.md](Library Management System/0-Introduction.md)
 
 ## How to Use This Repository
 
