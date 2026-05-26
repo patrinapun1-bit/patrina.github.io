@@ -14,10 +14,4 @@ It also includes a **holiday promotion spin**, where students can receive a rand
 - Collects basic user details (name and email) for contact information.
 - Input validation with limited attempts.
 
----
 
-## How to Run
-1. Clone this repository or download the file.
-2. Compile the Java file:
-   ```bash
-   javac StudentSet.java
