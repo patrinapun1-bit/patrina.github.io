@@ -8,16 +8,20 @@ Each project has its own README with detailed instructions and information.
 
 - **Adventure Game**  
   Navigate through the Beach, Forest, and Underwater Cave, answer trivia questions, collect items, and aim for 100 points or more to win.  
-  Detailed instructions: [AdventureGame/README.md](AdventureGame/README.md)
+  Detailed instructions: [AdventureGame/0-Introduction.md](AdventureGame/0-Introduction.md)
 
 - **Student Set**  
  This project simulates a charity program that provides support to students in three underfunded school areas.    
-  Detailed instructions: [StudentSet/README.md](StudentSet/README.md)
+  Detailed instructions: [StudentSet/0-Introduction.md](StudentSet/0-Introduction.md)
+
+- **Library Management System
+  This project simulates a library management system regarding fines, loans, and data on individuals.
+  Detailed instructions: [LibraryManagementSystem/0-Introduction.md](LibraryManagementSystem/0-Introduction.md)
 
 ## How to Use This Repository
 
-1. Click on a project folder above to access its detailed README.  
-2. Follow the instructions in that README to run the project or review its contents.  
+1. Click on a project folder above to access its detailed 0-Introduction.  
+2. Click on the following file(s) after the introduction to access code.   
 
 ---
 
