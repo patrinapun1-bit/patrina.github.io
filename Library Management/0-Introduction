@@ -1,0 +1,27 @@
+## Library Management System (SQL)
+
+A structured relational database designed to track and manage a library's daily operations, including book inventory, memberships, staff roles, book loans, and penalty fines.
+
+## Features & Core Components
+This database handles full CRUD operations and relational logic through 5 core tables:
+* **Books (`Books_T`):** Tracks titles, authors, ISBNs, publisher details, and current copy availability.
+* **Members (`Members_T`):** Manages subscriber details, registration addresses, and standard/premium tiers.
+* **Staff (`Staff_T`):** Records library employees and assigned operational roles (Managers, Librarians, Clerks).
+* **Loans (`Loans_T`):** Handles checkout transactions, connecting members, books, and processing staff with due/return dates.
+* **Fines (`Fine_T`):** Tracks late fee assessments and processing statuses (`Paid`, `Unpaid`, `N/A`).
+
+---
+
+## Database Implementation Details
+The provided script includes the full relational infrastructure setup:
+* **DDL Scripts:** Generates database schemas complete with strict primary keys (`PK`) and cascading foreign keys (`FK`).
+* **Data Ingestion:** Populates sample records representing active books (like *The Great Gatsby*), members, and staff workflows.
+* **Administrative Updates:** Scripted logic for handling active account updates (e.g., updating email variables and tracking live copy distributions).
+
+---
+
+## Analytical Use Cases Covered
+The schema includes pre-written query scripts to analyze real-world library operations:
+* **Conditional Filtering:** Isolates inventory segments by genre (e.g., *Fiction*) and tracks specific roles within staff contact directories.
+* **Multi-Table Relational Joins:** Deep-dives into operational history, such as cross-referencing member profiles against outstanding fine accounts, tracking full distribution logs, and identifying unpaid fees.
+* **Aggregation & Metrics Reporting:** Uses group groupings to calculate distribution concentrations across individual membership tiers and map physical book volume distribution by literary genre
