@@ -14,13 +14,9 @@ Each project has its own README with detailed instructions and information.
  This project simulates a charity program that provides support to students in three underfunded school areas.    
   Detailed instructions: [StudentSet/0-Introduction.md](StudentSet/0-Introduction.md)
 - **Library Management System**  
-  This project simulates a library management system for fines, loans, and individual data.
+  This project simulates a library management system for fines, loans, and individual data.  
   Detailed instructions: [Library Management/0-Introduction](Library%20Management/0-Introduction)
 
-
-- **Library Management System**  
-  This project simulates a library management system for fines, loans, and individual data.
-  Detailed instructions: [Library Management/0-Introduction](Library%20Management/0-Introduction)
 
 ## How to Use This Repository
 
