@@ -17,8 +17,8 @@ Each project has its own README with detailed instructions and information.
   Detailed instructions: [Library Management/0-Introduction](Library%20Management/0-Introduction)
 
 - **Digital Habits Regression Analysis**
-  Rebuilt a 500,000-row regression pipeline in Python (pandas, scikit-learn), identified severe multicollinearity via VIF analysis, and validated findings with 5-fold cross-validation.
-  Detailed instructions: [digital-habits-regression/README.md](digital-habits-regression/README.md)
+Rebuilt a 500,000-row regression pipeline in Python (pandas, scikit-learn), identified severe multicollinearity via VIF analysis, and validated findings with 5-fold cross-validation.
+Detailed instructions: [digital-habits-regression/0-introduction](digital-habits-regression/0-introduction)
 
 ## How to Use This Repository
 
