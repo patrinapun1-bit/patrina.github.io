@@ -1,7 +1,6 @@
 # Project Overview
 
-Welcome to Patrina Pun's Repository! This repository contains projects, including the Adventure Game and Student Set. 
-
+Welcome to Patrina Pun's Repository! 
 Each project has its own README with detailed instructions and information. 
 
 ## Projects
