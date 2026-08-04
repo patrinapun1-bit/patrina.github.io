@@ -1,0 +1,62 @@
+# Quantum-Sector Market Analytics Pipeline
+
+**Status: In progress — actively being built.** This README reflects current progress and will be updated as each phase is completed. Code, schema, and results described below are partial; see the Progress section for what's actually done vs. planned.
+
+## Overview
+
+An automated pipeline that tracks and analyzes publicly traded quantum computing companies (IonQ, Rigetti, D-Wave, Quantum Computing Inc.) against broader market and sector benchmarks (QTUM, SPY). The project answers two questions: how has the quantum computing sector performed as an investable market, and does a quantum computing algorithm (QAOA) pick a better portfolio from that sector than a classical optimization approach.
+
+The pipeline pulls daily price data, validates and logs data-quality issues, stores everything in a relational database, and analyzes it through both a statistical layer (R) and a quantum-vs-classical portfolio optimization comparison (Python/Qiskit).
+
+## Tech stack
+
+| Layer | Tool | Role |
+|---|---|---|
+| Ingestion & validation | Python (`yfinance`, `pandas`) | Pull daily prices, flag anomalies/missing data, load to MySQL |
+| Storage & analytics | MySQL (hosted on Aiven) | Schema, window-function analytics (rolling volatility, moving averages) |
+| Statistics & viz | R (`dplyr`, `ggplot2`, `forecast`) | Trend/volatility analysis, benchmarking, forecasting |
+| Optimization | Python (Qiskit) | QAOA-based portfolio optimization vs. classical mean-variance baseline |
+| Automation | GitHub Actions | Scheduled daily pipeline runs |
+
+## Progress
+
+- [x] Environment set up (Python, R, MySQL via Aiven, Qiskit via Colab)
+- [x] MySQL schema created (`tickers`, `daily_prices`, `data_quality_log`)
+- [ ] Python data pull script (`yfinance`)
+- [ ] Data validation / quality-logging layer
+- [ ] R statistical analysis layer (rolling stats, benchmark comparison, forecast)
+- [ ] Qiskit quantum portfolio optimization module (QAOA vs. classical)
+- [ ] Visualization / R Shiny dashboard
+- [ ] GitHub Actions automation
+- [ ] Final polish (limitations write-up, resume bullets)
+
+## Database schema
+
+```sql
+tickers (ticker PK, company_name, sector, is_benchmark)
+daily_prices (id PK, ticker FK, price_date, open, high, low, close, adj_close, volume)
+data_quality_log (id PK, ticker FK, price_date, issue_type, note, resolved)
+```
+
+## Data source
+
+Price data comes from `yfinance` (Yahoo Finance), free, no API key required. Because it scrapes rather than hitting a stable official API, it can occasionally break when Yahoo changes their site — the validation layer exists specifically to catch and log that kind of failure rather than silently ingesting bad data.
+
+## Limitations (preliminary — will be finalized once the analysis is complete)
+
+- Short trading history for these companies limits the statistical power of any trend/forecast.
+- The forecasting component is intended as descriptive/directional, not a trading signal.
+- At this basket size (4–6 assets), classical portfolio optimization is expected to match or outperform the quantum (QAOA) approach — the point of the comparison is demonstrating the method and when it does/doesn't help, not claiming a quantum advantage.
+- This project is for educational/portfolio purposes and is not investment advice.
+
+## Setup (once code is added)
+
+1. Clone this repo
+2. `pip install -r requirements.txt` (Python dependencies)
+3. Set up a `.env` file with MySQL connection credentials (not committed to this repo)
+4. Run the data pull script: `python pull_data.py`
+5. See `/r-analysis` for the R scripts once added
+
+---
+
+*Last updated: reflects progress as of the initial project setup phase.*
