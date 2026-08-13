@@ -52,7 +52,7 @@ Results & Visualizations
 
 ## Progress
 
-### ✅ Completed
+### Completed
 
 * [x] MySQL database hosted on Aiven
 * [x] Relational database schema
@@ -62,7 +62,11 @@ Results & Visualizations
 * [x] **14 real volatility spikes detected and logged**
 * [x] SQL window-function analytics
 
-### 🚧 In Progress
+-- UPDATE: 2 Python Files posted: pull_data, test_connection 
+-- UPDATE: sql workbench file posted: schema.sql 
+--UPDATE: basic file of all needed software for this project posted: requirements.txt 
+
+### In Progress
 
 * [ ] R statistical analysis
 * [ ] Rolling volatility & moving averages
