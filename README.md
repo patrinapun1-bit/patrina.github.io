@@ -20,6 +20,11 @@ Each project has its own README with detailed instructions and information.
 Rebuilt a 500,000-row regression pipeline in Python (pandas, scikit-learn), identified severe multicollinearity via VIF analysis, and validated findings with 5-fold cross-validation.
 Detailed instructions: [digital-habits-regression/0-introduction](digital-habits-regression/0-introduction)
 
+- **Quantum-Sector Market Analytics Pipeline**
+Built an automated Python/MySQL pipeline to track publicly traded quantum computing companies against broader market benchmarks, including data ingestion, validation, and an audit trail that identified 14 real volatility spikes. Currently expanding the project with R-based statistical analysis, Qiskit QAOA portfolio optimization, Docker containerization, and GitHub Actions automation.
+Detailed instructions: [Quantum-Sector Market Analytics Pipeline/0-introduction](Quantum-Sector%20Market%20Analytics%20Pipeline/0-introduction)
+
+
 ## How to Use This Repository
 
 1. Click on a project folder above to access its detailed 0-Introduction.  
