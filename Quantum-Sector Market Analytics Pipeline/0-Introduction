@@ -60,7 +60,7 @@ Results & Visualizations
 * [x] Data validation and anomaly detection
 * [x] Data-quality audit trail
 * [x] **14 real volatility spikes detected and logged**
-* [x] SQL window-function analytics
+* [] SQL window-function analytics
 
 -- UPDATE: 2 Python Files posted: pull_data, test_connection 
 -- UPDATE: sql workbench file posted: schema.sql 
