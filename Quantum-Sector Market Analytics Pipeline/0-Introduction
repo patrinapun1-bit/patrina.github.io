@@ -68,8 +68,8 @@ Results & Visualizations
 
 ### In Progress
 
-* [ ] R statistical analysis
-* [ ] Rolling volatility & moving averages
+* [X] R statistical analysis
+* [X] Rolling volatility & moving averages
 * [ ] Benchmark comparisons
 * [ ] Forecasting & visualizations
 * [ ] QAOA portfolio optimization
