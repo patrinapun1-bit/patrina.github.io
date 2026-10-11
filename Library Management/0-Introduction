@@ -24,4 +24,4 @@ The provided script includes the full relational infrastructure setup:
 The schema includes pre-written query scripts to analyze real-world library operations:
 * **Conditional Filtering:** Isolates inventory segments by genre (e.g., *Fiction*) and tracks specific roles within staff contact directories.
 * **Multi-Table Relational Joins:** Deep-dives into operational history, such as cross-referencing member profiles against outstanding fine accounts, tracking full distribution logs, and identifying unpaid fees.
-* **Aggregation & Metrics Reporting:** Uses group groupings to calculate distribution concentrations across individual membership tiers and map physical book volume distribution by literary genre
+* **Aggregation & Metrics Reporting:** Uses group groupings to calculate distribution concentrations across individual membership tiers and map physical book volume distribution by literary genre.
