@@ -76,15 +76,16 @@ Results & Visualizations
 
 ### 📋 Planned
 
-* [ ] Classical vs. QAOA performance comparison
+* [X] Classical vs. QAOA performance comparison
 * [ ] Docker containerization
-* [ ] GitHub Actions automation
+* [X] GitHub Actions automation --> runs weekdays after market close
 * [ ] Final analysis & documentation
 
 ---
 ## Results
 
 All figures come from one year of daily prices (Aug 2025 to Aug 2026, about 252 trading days per ticker). Volatility is the average of the 7-day rolling standard deviation of daily returns.
+Pipeline is safe to rerun.
 
 ### Sector volatility vs. benchmarks
 
