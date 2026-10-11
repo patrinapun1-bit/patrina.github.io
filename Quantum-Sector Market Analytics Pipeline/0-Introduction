@@ -70,9 +70,9 @@ Results & Visualizations
 
 * [X] R statistical analysis
 * [X] Rolling volatility & moving averages
-* [ ] Benchmark comparisons
-* [ ] Forecasting & visualizations
-* [ ] QAOA portfolio optimization
+* [X] Benchmark comparisons
+* [X] Forecasting & visualizations
+* [X] QAOA portfolio optimization
 
 ### 📋 Planned
 
@@ -82,15 +82,52 @@ Results & Visualizations
 * [ ] Final analysis & documentation
 
 ---
+## Results
+
+All figures come from one year of daily prices (Aug 2025 to Aug 2026, about 252 trading days per ticker). Volatility is the average of the 7-day rolling standard deviation of daily returns.
+
+### Sector volatility vs. benchmarks
+
+| Ticker | Group | Avg daily return | Avg volatility |
+|---|---|---|---|
+| QBTS | Quantum | 0.32% | 6.50% |
+| RGTI | Quantum | 0.27% | 6.20% |
+| QUBT | Quantum | -0.02% | 6.11% |
+| IONQ | Quantum | 0.22% | 5.59% |
+| QTUM | Benchmark | 0.22% | 1.88% |
+| SPY | Benchmark | 0.08% | 0.76% |
+
+The four quantum stocks are roughly 7 to 8 times as volatile as the S&P 500 (SPY) and about 3 times as volatile as the sector ETF (QTUM).
+
+![7-day rolling volatility](volatility_chart.png)
+
+### The stocks move together
+
+Pairwise correlations between the four quantum stocks range from about 0.77 to 0.92. Holding two of them adds little diversification, because they tend to rise and fall on the same days. This matters for portfolio construction below.
+
+### Forecast
+
+An ARIMA model fit to IONQ's closing price chose a random-walk structure: the best forecast for any future day is the last observed price. The useful output is the uncertainty, not the prediction. The 95% interval widens from about $38.6 to $50.2 on day 1 to about $13.8 to $75.1 on day 30. This is descriptive, not a trading signal.
+
+### Quantum vs. classical portfolio selection
+
+The module picks 2 of the 4 quantum stocks by minimizing risk minus expected return. It compares QAOA (simulated, via Qiskit) against an exact classical solver.
+
+- On the full year, both methods picked IONQ and QBTS.
+- With an 80/20 train/test split, both methods picked IONQ and RGTI.
+- On the held-out 20%, the selected pair grew $1 to about $0.71, versus about $0.74 for an equal-weight hold of all four. The whole sector declined in that window, and the optimizer's pick did not beat the naive baseline.
+
+QAOA matching the classical optimum is expected at this size (4 qubits, 6 possible pairs), and it is not evidence of a quantum advantage. The result is one split over a short window, so it should not be over-read.
+
+### Data quality
+
+The validation layer flagged 14 single-day price moves above 20%, all in the quantum stocks and none in the benchmarks. A typo in the benchmark `sector` label was also caught during analysis and corrected in the database.
 
 ## Database Schema
-
-```text
+text
 tickers
 daily_prices
 data_quality_log
-```
-
 The tables are connected through relational keys, with `data_quality_log` providing an audit trail for suspicious or missing data.
 
 ---
