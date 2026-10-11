@@ -37,7 +37,7 @@ CREATE TABLE daily_prices (
         ('QBTS', 'D-Wave Quantum', 'Quantum Computing', FALSE), 
         ('QUBT', 'Quantum Computing Inc', 'Quantum Computing', FALSE), 
         ('QTUM', 'Defiance Quantum ETF', 'Benchmark', TRUE),
-        ('SPY', 'SPDR S&P 500 ETF', 'Benchmakr', True); 
+        ('SPY', 'SPDR S&P 500 ETF', 'Benchmark', True); 
         
         SHOW TABLES;
 	    SELECT * FROM data_quality_log;
