@@ -78,6 +78,7 @@ Results & Visualizations
 
 * [X] Classical vs. QAOA performance comparison
 * [ ] Docker containerization
+* [X] R Shiny
 * [X] GitHub Actions automation --> runs weekdays after market close
 * [ ] Final analysis & documentation
 
@@ -123,6 +124,9 @@ QAOA matching the classical optimum is expected at this size (4 qubits, 6 possib
 ### Data quality
 
 The validation layer flagged 14 single-day price moves above 20%, all in the quantum stocks and none in the benchmarks. A typo in the benchmark `sector` label was also caught during analysis and corrected in the database.
+
+### R Shiny RESULT:Live Dashboard
+https://01a1383a-56b3-4267-e21e-7386c0905934.share.connect.posit.cloud 
 
 ## Database Schema
 text
