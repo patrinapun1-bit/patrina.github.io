@@ -1,28 +1,28 @@
 # Quantum-Sector Market Analytics Pipeline
 
-Status: In Progress
+![Status](https://img.shields.io/badge/status-complete-brightgreen)
 
-An automated pipeline that tracks and analyzes publicly traded quantum computing companies — **IonQ, Rigetti, D-Wave, and Quantum Computing Inc.** — against broader market benchmarks (**QTUM and S&P 500**).
+An automated pipeline that tracks and analyzes publicly traded quantum computing companies (**IonQ, Rigetti, D-Wave, and Quantum Computing Inc.**) against market benchmarks (**QTUM and the S&P 500**).
 
-The project combines Python, SQL, R, Qiskit, Docker, and GitHub Actions to answer two questions:
+It combines Python, SQL, R, Qiskit, and GitHub Actions to answer two questions:
 
 1. How has the quantum computing sector performed as an investable market?
 2. Can a quantum algorithm (**QAOA**) select a better portfolio than a classical optimization method?
 
-> This README is a living document and will be updated as the project progresses.
+**Live dashboard:** [Quantum-Sector Market Analytics](https://01a1383a-56b3-4267-e21e-7386c0905934.share.connect.posit.cloud)
 
 ---
 
 ## Tech Stack
 
-| Layer            | Technology                   | Purpose                                     |
-| ---------------- | ---------------------------- | ------------------------------------------- |
-| Data ingestion   | Python, `yfinance`, `pandas` | Collect and validate market data            |
-| Database         | MySQL + Aiven                | Store price history and data-quality logs   |
-| Analysis         | R                            | Volatility, trends, benchmarks, forecasting |
-| Quantum          | Qiskit                       | QAOA portfolio optimization                 |
-| Containerization | Docker                       | Reproducible environment                    |
-| Automation       | GitHub Actions               | Scheduled pipeline execution                |
+| Layer | Technology | Purpose |
+| --- | --- | --- |
+| Data ingestion | Python, `yfinance`, `pandas` | Collect and validate market data |
+| Database | MySQL on Aiven | Store price history and data-quality logs |
+| Analysis | R | Volatility, trends, benchmarks, forecasting |
+| Dashboard | R Shiny on Posit Connect Cloud | Interactive live dashboard |
+| Quantum | Qiskit | QAOA portfolio optimization |
+| Automation | GitHub Actions | Scheduled pipeline run on weekdays after market close |
 
 ---
 
@@ -30,63 +30,38 @@ The project combines Python, SQL, R, Qiskit, Docker, and GitHub Actions to answe
 
 ```text
 Yahoo Finance
-      ↓
-Python Data Ingestion
-      ↓
-Validation & Audit Trail
-      ↓
-MySQL / Aiven
-      ↓
- ┌────┴─────┐
- ↓          ↓
-R Analysis  Qiskit / QAOA
- ↓          ↓
- └────┬─────┘
-      ↓
-Classical vs. Quantum Comparison
-      ↓
-Results & Visualizations
+      |
+Python ingestion
+      |
+Validation and audit trail
+      |
+MySQL (Aiven)
+      |
+  +---+-------------+
+  |                 |
+R analysis      Qiskit / QAOA
+  |                 |
+Shiny dashboard   Classical vs. quantum comparison
 ```
 
 ---
 
 ## Progress
 
-### Completed
-
-* [x] MySQL database hosted on Aiven
-* [x] Relational database schema
-* [x] Python `yfinance` data ingestion
-* [x] Data validation and anomaly detection
-* [x] Data-quality audit trail
-* [x] **14 real volatility spikes detected and logged**
-* [] SQL window-function analytics
-
--- UPDATE: 2 Python Files posted: pull_data, test_connection 
--- UPDATE: sql workbench file posted: schema.sql 
---UPDATE: basic file of all needed software for this project posted: requirements.txt 
-
-### In Progress
-
-* [X] R statistical analysis
-* [X] Rolling volatility & moving averages
-* [X] Benchmark comparisons
-* [X] Forecasting & visualizations
-* [X] QAOA portfolio optimization
-
-### 📋 Planned
-
-* [X] Classical vs. QAOA performance comparison
-* [ ] Docker containerization
-* [X] R Shiny
-* [X] GitHub Actions automation --> runs weekdays after market close
-* [ ] Final analysis & documentation
-
+- [x] MySQL database hosted on Aiven
+- [x] Relational database schema
+- [x] Python `yfinance` data ingestion
+- [x] Data validation and anomaly detection (14 real price spikes flagged)
+- [x] Data-quality audit trail (safe to rerun without creating duplicates)
+- [x] R analysis: rolling volatility, moving averages, benchmark comparison, forecast
+- [x] QAOA vs. classical portfolio optimization with a train/test split
+- [x] R Shiny dashboard, deployed to Posit Connect Cloud
+- [x] GitHub Actions automation (weekdays after market close)
 ---
+
 ## Results
 
-All figures come from one year of daily prices (Aug 2025 to Aug 2026, about 252 trading days per ticker). Volatility is the average of the 7-day rolling standard deviation of daily returns.
-Pipeline is safe to rerun.
+Snapshot of one year of daily prices (Aug 2025 to Aug 2026, about 252 trading days per ticker). Volatility is the average 7-day rolling standard deviation of daily returns. The live dashboard updates with newer data, so its numbers differ slightly.
 
 ### Sector volatility vs. benchmarks
 
@@ -105,7 +80,7 @@ The four quantum stocks are roughly 7 to 8 times as volatile as the S&P 500 (SPY
 
 ### The stocks move together
 
-Pairwise correlations between the four quantum stocks range from about 0.77 to 0.92. Holding two of them adds little diversification, because they tend to rise and fall on the same days. This matters for portfolio construction below.
+Pairwise correlations between the four quantum stocks range from about 0.77 to 0.92. Holding two of them adds little diversification, because they tend to rise and fall on the same days.
 
 ### Forecast
 
@@ -113,53 +88,43 @@ An ARIMA model fit to IONQ's closing price chose a random-walk structure: the be
 
 ### Quantum vs. classical portfolio selection
 
-The module picks 2 of the 4 quantum stocks by minimizing risk minus expected return. It compares QAOA (simulated, via Qiskit) against an exact classical solver.
+The module picks 2 of the 4 quantum stocks by minimizing risk minus expected return, and compares QAOA (simulated with Qiskit) against an exact classical solver.
 
 - On the full year, both methods picked IONQ and QBTS.
 - With an 80/20 train/test split, both methods picked IONQ and RGTI.
 - On the held-out 20%, the selected pair grew $1 to about $0.71, versus about $0.74 for an equal-weight hold of all four. The whole sector declined in that window, and the optimizer's pick did not beat the naive baseline.
 
-QAOA matching the classical optimum is expected at this size (4 qubits, 6 possible pairs), and it is not evidence of a quantum advantage. The result is one split over a short window, so it should not be over-read.
+QAOA matching the classical optimum is expected at this size (4 qubits, 6 possible pairs) and is not evidence of a quantum advantage. This is one split over a short window, so it should not be over-read.
 
 ### Data quality
 
-The validation layer flagged 14 single-day price moves above 20%, all in the quantum stocks and none in the benchmarks. A typo in the benchmark `sector` label was also caught during analysis and corrected in the database.
+The validation layer flagged 14 single-day price moves above 20%, all in the quantum stocks and none in the benchmarks. A typo in a benchmark `sector` label was also caught during analysis and corrected.
 
-### R Shiny RESULT:Live Dashboard
-https://01a1383a-56b3-4267-e21e-7386c0905934.share.connect.posit.cloud 
+---
 
 ## Database Schema
-text
-tickers
-daily_prices
-data_quality_log
-The tables are connected through relational keys, with `data_quality_log` providing an audit trail for suspicious or missing data.
+
+```text
+tickers          (ticker PK, company_name, sector, is_benchmark)
+daily_prices     (id PK, ticker FK, price_date, open, high, low, close, adj_close, volume)
+data_quality_log (id PK, ticker FK, price_date, issue_type, note, resolved)
+```
+
+`daily_prices` and `data_quality_log` both enforce uniqueness constraints, so the pipeline can run every day without creating duplicate rows.
 
 ---
 
 ## Data Validation
 
-Daily market data is checked before being stored. Price movements greater than **20% in a single day** are flagged for review rather than automatically trusted.
-
-The completed validation system has identified **14 real volatility spikes** in the collected data.
+Daily market data is checked before it is trusted. Price movements greater than **20% in a single day** are flagged and logged to an audit-trail table for review, instead of being silently accepted.
 
 ---
 
 ## Limitations
 
-* Quantum computing companies have relatively short trading histories.
-* Forecasts are descriptive and are **not trading signals**.
-* A small portfolio may favor classical optimization.
-* The project does **not assume quantum advantage**; QAOA will be evaluated against a classical baseline using the same data.
-* This project is for educational and portfolio purposes, not investment advice.
-
----
-
-## Future Goal
-
-The final system will automatically collect, validate, analyze, and optimize the portfolio on a schedule using **Python + MySQL + R + Qiskit + Docker + GitHub Actions**.
-
----
-
-*Last updated: October 2026 — Python data ingestion, validation, database integration, and audit-trail system completed. R analysis and quantum optimization are currently in progress.*
+- Quantum computing companies have short trading histories.
+- Forecasts are descriptive and are not trading signals.
+- With only four assets, classical optimization matches or beats QAOA.
+- The database runs on a free tier that powers off after inactivity. Scheduled runs or the dashboard can fail until it is restarted.
+- Educational and portfolio project, not investment advice.
 
