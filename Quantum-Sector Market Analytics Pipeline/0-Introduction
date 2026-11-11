@@ -61,7 +61,7 @@ Shiny dashboard   Classical vs. quantum comparison
 
 ## Results
 
-Snapshot of one year of daily prices (Aug 2025 to Aug 2026, about 252 trading days per ticker). Volatility is the average 7-day rolling standard deviation of daily returns. The live dashboard updates with newer data, so its numbers differ slightly.
+The volatility table is a snapshot of Aug 2025 to Aug 2026 (about 252 trading days per ticker). The quantum portfolio results below use data through Oct/Nov 2026 (about 296 trading days per ticker). Volatility is the average 7-day rolling standard deviation of daily returns. The live dashboard updates with newer data, so its numbers differ slightly.
 
 ### Sector volatility vs. benchmarks
 
@@ -90,11 +90,18 @@ An ARIMA model fit to IONQ's closing price chose a random-walk structure: the be
 
 The module picks 2 of the 4 quantum stocks by minimizing risk minus expected return, and compares QAOA (simulated with Qiskit) against an exact classical solver.
 
-- On the full year, both methods picked IONQ and QBTS.
-- With an 80/20 train/test split, both methods picked IONQ and RGTI.
-- On the held-out 20%, the selected pair grew $1 to about $0.71, versus about $0.74 for an equal-weight hold of all four. The whole sector declined in that window, and the optimizer's pick did not beat the naive baseline.
+- On the full ~15 months of data, both methods picked IONQ and RGTI.
+- With an 80/20 train/test split, both methods picked IONQ and QBTS.
+- On the held-out 20% (about 59 trading days), the selected pair grew $1 to about $1.005, versus about $0.993 for an equal-weight hold of all four. An earlier run on a shorter window gave the opposite result, so the outcome depends on the window and should not be over-read.
 
-QAOA matching the classical optimum is expected at this size (4 qubits, 6 possible pairs) and is not evidence of a quantum advantage. This is one split over a short window, so it should not be over-read.
+QAOA matching the classical optimum is expected at this size (4 qubits, 6 possible pairs) and is not evidence of a quantum advantage.
+
+### Data quality
+
+The validation layer flagged 14 single-day price moves above 20%, all in the quantum stocks and none in the benchmarks. A typo in a benchmark `sector` label was also caught during analysis and corrected.
+
+---
+
 
 ### Data quality
 
