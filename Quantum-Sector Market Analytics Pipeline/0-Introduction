@@ -133,5 +133,6 @@ Daily market data is checked before it is trusted. Price movements greater than 
 - Forecasts are descriptive and are not trading signals.
 - With only four assets, classical optimization matches or beats QAOA.
 - The database runs on a free tier that powers off after inactivity. Scheduled runs or the dashboard can fail until it is restarted.
+      - The live database runs on Aiven's free tier, which powers off when inactive. When it's offline, the dashboard automatically falls back to a saved data snapshot (shown with a note), so it always loads. The daily pipeline needs the database powered on to pull new data.
 - Educational and portfolio project, not investment advice.
 
