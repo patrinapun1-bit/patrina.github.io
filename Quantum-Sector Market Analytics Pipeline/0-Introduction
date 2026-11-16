@@ -10,7 +10,7 @@ It combines Python, SQL, R, Qiskit, and GitHub Actions to answer two questions:
 2. Can a quantum algorithm (**QAOA**) select a better portfolio than a classical optimization method?
 
 **Live dashboard:** [Quantum-Sector Market Analytics](https://01a1383a-56b3-4267-e21e-7386c0905934.share.connect.posit.cloud)
-
+![Dashboard preview](dashboard_screenshot.png)
 ---
 
 ## Tech Stack
